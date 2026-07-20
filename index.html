@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <meta name="description" content="Oficjalny regulamin serwera DayZ MoonLight.">
+  <meta property="og:title" content="Regulamin serwera DayZ MoonLight">
+  <meta property="og:description" content="Zasady rozgrywki obowiązujące na serwerze DayZ MoonLight.">
+  <meta property="og:type" content="website">
+  <title>Regulamin serwera DayZ MoonLight</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07101d;
+      --panel: #0e1929;
+      --panel-2: #111f33;
+      --text: #e7edf6;
+      --muted: #9aa9bc;
+      --line: #24344a;
+      --accent: #54a9ff;
+      --accent-soft: rgba(84, 169, 255, .12);
+      --shadow: 0 24px 70px rgba(0, 0, 0, .32);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 15% -10%, rgba(84, 169, 255, .13), transparent 33rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.68;
+    }
+
+    a { color: inherit; }
+    button { font: inherit; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(255, 255, 255, .07);
+      background: rgba(7, 16, 29, .86);
+      backdrop-filter: blur(16px);
+    }
+
+    .topbar-inner {
+      width: min(1180px, calc(100% - 32px));
+      min-height: 64px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      font-size: .92rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 18px rgba(84, 169, 255, .8);
+    }
+
+    .topbar-actions { display: flex; gap: 8px; }
+
+    .button {
+      min-height: 38px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: rgba(255, 255, 255, .025);
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color .18s ease, background .18s ease, transform .18s ease;
+    }
+
+    .button:hover {
+      border-color: rgba(84, 169, 255, .72);
+      background: var(--accent-soft);
+      transform: translateY(-1px);
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 58px 0 76px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(32px, 6vw, 72px);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: linear-gradient(145deg, rgba(20, 35, 56, .98), rgba(10, 19, 33, .98));
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      right: -190px;
+      top: -210px;
+      border-radius: 50%;
+      background: rgba(84, 169, 255, .12);
+      filter: blur(2px);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      color: #fff;
+      font-size: clamp(2.2rem, 6vw, 4.6rem);
+      line-height: 1.02;
+      letter-spacing: -.045em;
+    }
+
+    .hero-copy {
+      max-width: 670px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .version {
+      margin: 24px 0 0;
+      color: #c2cfde;
+      font-size: .88rem;
+    }
+
+    .notice {
+      margin-top: 20px;
+      padding: 20px 22px;
+      border: 1px solid rgba(84, 169, 255, .26);
+      border-radius: 14px;
+      background: var(--accent-soft);
+    }
+
+    .notice strong { color: #fff; }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 250px minmax(0, 1fr);
+      gap: 28px;
+      margin-top: 28px;
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 92px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(14, 25, 41, .82);
+    }
+
+    .toc-title {
+      margin: 0 0 10px;
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .toc ol {
+      display: grid;
+      gap: 3px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: toc;
+    }
+
+    .toc li { counter-increment: toc; }
+
+    .toc a {
+      display: block;
+      padding: 7px 9px;
+      border-radius: 8px;
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.35;
+      text-decoration: none;
+    }
+
+    .toc a::before {
+      content: counter(toc) ". ";
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .toc a:hover {
+      background: var(--accent-soft);
+      color: #fff;
+    }
+
+    main { min-width: 0; }
+
+    .rules-section {
+      padding: clamp(24px, 4vw, 38px);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: linear-gradient(150deg, rgba(17, 31, 51, .9), rgba(12, 23, 39, .94));
+      box-shadow: 0 15px 45px rgba(0, 0, 0, .15);
+    }
+
+    .rules-section + .rules-section { margin-top: 18px; }
+
+    h2 {
+      margin: 0 0 18px;
+      color: #fff;
+      font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+      line-height: 1.2;
+      letter-spacing: -.02em;
+    }
+
+    .rules {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: rule;
+    }
+
+    .rules li {
+      position: relative;
+      min-height: 38px;
+      padding: 9px 0 9px 48px;
+      color: #c8d3e1;
+      counter-increment: rule;
+    }
+
+    .rules li + li { border-top: 1px solid rgba(255, 255, 255, .055); }
+
+    .rules li::before {
+      content: attr(data-number);
+      position: absolute;
+      left: 0;
+      top: 10px;
+      color: var(--accent);
+      font-size: .8rem;
+      font-weight: 800;
+    }
+
+    .rules strong { color: #fff; }
+
+    footer {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 0 0 34px;
+      color: var(--muted);
+      font-size: .86rem;
+      text-align: center;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      z-index: 20;
+      padding: 10px 14px;
+      border: 1px solid rgba(84, 169, 255, .38);
+      border-radius: 10px;
+      background: #122238;
+      color: #fff;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 10px);
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .toast.visible { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc { position: static; }
+      .toc ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 560px) {
+      .page { padding-top: 24px; }
+      .topbar-inner { min-height: 58px; }
+      .topbar-actions .button:last-child { display: none; }
+      .hero { padding: 28px 22px; border-radius: 16px; }
+      .toc ol { grid-template-columns: 1fr; }
+      .rules-section { padding: 22px 18px; }
+      .rules li { padding-left: 42px; }
+    }
+
+    @media print {
+      :root { color-scheme: light; }
+      body { background: #fff; color: #111827; }
+      .topbar, .toc, .toast { display: none !important; }
+      .page { width: 100%; padding: 0; }
+      .hero, .rules-section, .notice {
+        border-color: #cbd5e1;
+        background: #fff;
+        box-shadow: none;
+        break-inside: avoid;
+      }
+      .hero { padding: 32px; }
+      .hero::after { display: none; }
+      h1, h2, .rules strong, .notice strong { color: #111827; }
+      .hero-copy, .version, .rules li { color: #334155; }
+      .layout { display: block; }
+      .rules-section { margin-top: 18px; }
+      footer { color: #475569; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top"><span class="brand-mark"></span> MOONLIGHT / DAYZ</a>
+      <div class="topbar-actions">
+        <button class="button" id="copy-link" type="button">Kopiuj link</button>
+        <button class="button" type="button" onclick="window.print()">Drukuj</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page" id="top">
+    <section class="hero">
+      <p class="eyebrow">MoonLight</p>
+      <h1>Regulamin serwera DayZ</h1>
+      <p class="hero-copy">Oficjalne zasady rozgrywki obowiązujące wszystkich graczy serwera MoonLight.</p>
+      <p class="version">Wersja 1.0 · 20 lipca 2026 r.</p>
+    </section>
+
+    <aside class="notice">
+      <strong>Ważne:</strong> wejście na serwer i rozpoczęcie rozgrywki oznacza akceptację niniejszego regulaminu. Nieznajomość zasad nie zwalnia z odpowiedzialności.
+    </aside>
+
+    <div class="layout">
+      <nav class="toc" aria-label="Spis treści">
+        <p class="toc-title">Spis treści</p>
+        <ol>
+          <li><a href="#zasady-ogolne">Zasady ogólne</a></li>
+          <li><a href="#zabronione-zachowania">Zabronione zachowania</a></li>
+          <li><a href="#pvp">PvP i strefy bezpieczne</a></li>
+          <li><a href="#rajdy">Rajdy baz</a></li>
+          <li><a href="#budowanie">Budowanie baz</a></li>
+          <li><a href="#zgloszenia">Zgłoszenia i zwroty</a></li>
+          <li><a href="#kary">Kary</a></li>
+          <li><a href="#odwolania">Odwołania od banów</a></li>
+          <li><a href="#koncowe">Postanowienia końcowe</a></li>
+        </ol>
+      </nav>
+
+      <main>
+        <section class="rules-section" id="zasady-ogolne">
+          <h2>1. Zasady ogólne</h2>
+          <ol class="rules">
+            <li data-number="1.1">Każdy gracz ma obowiązek grać uczciwie oraz stosować się do poleceń administracji związanych z bezpieczeństwem i prawidłowym działaniem serwera.</li>
+            <li data-number="1.2"><strong>Na serwerze nie obowiązuje limit liczebności grupy.</strong></li>
+            <li data-number="1.3">Zakazane jest używanie cheatów, skryptów, makr, zewnętrznych celowników, niedozwolonych modyfikacji oraz innych narzędzi zapewniających przewagę nad pozostałymi graczami.</li>
+            <li data-number="1.4">Zakazane jest wykorzystywanie błędów gry, glitchy, exploitów, przenikania przez tekstury, dostawania się pod mapę, duplikowania przedmiotów, desynchronizacji lub innych nieprawidłowości mechaniki gry.</li>
+            <li data-number="1.5">Znaleziony błąd należy zgłosić administracji. Celowe zatajenie błędu i dalsze wykorzystywanie go będzie traktowane jako świadome naruszenie regulaminu.</li>
+            <li data-number="1.6">Zakazane jest podszywanie się pod administrację, utrudnianie prowadzonego postępowania oraz świadome przekazywanie fałszywych informacji w zgłoszeniu.</li>
+          </ol>
+        </section>
+
+        <section class="rules-section" id="zabronione-zachowania">
+          <h2>2. Zabronione zachowania podczas rozgrywki</h2>
+          <ol class="rules">
+            <li data-number="2.1"><strong>Combat logging jest zabroniony.</strong> Nie wolno wylogować się w celu uniknięcia walki, śmierci, utraty ekwipunku, pościgu albo konsekwencji trwającej sytuacji PvP.</li>
+            <li data-number="2.2"><strong>Ghosting jest zabroniony.</strong> Dotyczy to w szczególności wykorzystywania ponownego logowania, zmiany pozycji poza serwerem lub dodatkowych kont w celu wejścia do bazy, obejścia przeciwnika albo uzyskania przewagi taktycznej.</li>
+            <li data-number="2.3"><strong>Stream sniping jest zabroniony.</strong> Nie wolno wykorzystywać transmisji, nagrań na żywo ani informacji pochodzących od widzów do lokalizowania lub atakowania gracza.</li>
+            <li data-number="2.4"><strong>Budowanie podczas aktywnej walki jest zabronione.</strong> Nie wolno stawiać, rozbudowywać, demontować ani przebudowywać konstrukcji w celu uzyskania osłony, wysokości, odcięcia drogi lub innej przewagi w trwającej sytuacji PvP.</li>
+            <li data-number="2.5">Nie wolno celowo blokować wejść, wyjść, drzwi, drabin ani przejść w celu uwięzienia gracza lub wykorzystania błędu mechaniki. Zasada nie dotyczy prawidłowo wykonanych zabezpieczeń własnej bazy, zgodnych z regulaminem budowania.</li>
+            <li data-number="2.6">Każda próba obejścia bana, ograniczenia albo decyzji administracji przy użyciu innego konta może skutkować zaostrzeniem kary wobec wszystkich powiązanych kont.</li>
+          </ol>
+        </section>
+
+        <section class="rules-section" id="pvp">
+          <h2>3. PvP i strefy bezpieczne</h2>
+          <ol class="rules">
+            <li data-number="3.1"><strong>Na MoonLight nie ma stref bezpiecznych.</strong> PvP jest dozwolone na całej mapie, z uwzględnieniem pozostałych postanowień regulaminu.</li>
+            <li data-number="3.2">Zwykła śmierć w walce, utrata ekwipunku lub przejęcie pojazdu i przedmiotów zgodnie z mechaniką gry nie stanowią podstawy do interwencji administracji.</li>
+            <li data-number="3.3">Rywalizacja PvP nie usprawiedliwia cheatowania, wykorzystywania błędów, nękania poza grą ani obchodzenia zasad serwera.</li>
+          </ol>
+        </section>
+
+        <section class="rules-section" id="rajdy">
+          <h2>4. Rajdy baz</h2>
+          <ol class="rules">
+            <li data-number="4.1"><strong>Rajdy baz są dozwolone całodobowo — 24 godziny na dobę, 7 dni w tygodniu.</strong></li>
+            <li data-number="4.2">Podczas rajdu wolno korzystać wyłącznie z prawidłowych mechanik gry i rozwiązań udostępnionych na serwerze. Wykorzystywanie glitchy, exploitów, przenikania przez elementy bazy lub innych błędów jest zabronione.</li>
+            <li data-number="4.3"><strong>Griefing baz jest zabroniony.</strong> Zniszczenia powinny ograniczać się do działań potrzebnych do uzyskania dostępu i zabrania przedmiotów.</li>
+            <li data-number="4.4">Zakazane jest celowe niszczenie bazy bez zamiaru zabrania przedmiotów, masowe niszczenie pozostałego wyposażenia, rozsypywanie lub rujnowanie łupu wyłącznie po to, aby wyrządzić właścicielom dodatkowe szkody.</li>
+            <li data-number="4.5">Po rajdzie nie wolno stawiać konstrukcji mających trwale zablokować właścicielom dostęp do ich bazy ani wykorzystywać elementów budowlanych do uwięzienia graczy.</li>
+            <li data-number="4.6">Zakaz budowania podczas aktywnej walki obowiązuje również w czasie ataku na bazę i jej obrony.</li>
+          </ol>
+        </section>
+
+        <section class="rules-section" id="budowanie">
+          <h2>5. Zasady budowania baz</h2>
+          <ol class="rules">
+            <li data-number="5.1"><strong>Obowiązuje zakaz budowania w promieniu mniejszym niż 500 metrów</strong> od zewnętrznej granicy obiektu lub terenu militarnego.</li>
+            <li data-number="5.2">Zakazane jest budowanie wewnątrz budynków policyjnych, medycznych i strażackich oraz wykorzystywanie ich wnętrz jako części bazy.</li>
+            <li data-number="5.3">Dla budynków policyjnych, medycznych i strażackich nie obowiązuje dodatkowy promień ochronny. Budowa poza ich wnętrzem jest dopuszczalna, o ile nie blokuje wejść, wyjść ani normalnego dostępu do budynku.</li>
+            <li data-number="5.4">Zakazane jest umieszczanie konstrukcji w teksturach, pod mapą albo w sposób wykorzystujący błędy kolizji i uniemożliwiający ich prawidłowe uszkodzenie lub rozebranie.</li>
+            <li data-number="5.5">W razie wątpliwości dotyczących lokalizacji gracz powinien skontaktować się z administracją przed rozpoczęciem budowy. Ostateczny pomiar i kwalifikacja terenu należą do administracji.</li>
+            <li data-number="5.6">Konstrukcje naruszające zasady budowania mogą zostać usunięte bez zwrotu wykorzystanych materiałów i przechowywanych w nich przedmiotów.</li>
+          </ol>
+        </section>
+
+        <section class="rules-section" id="zgloszenia">
+          <h2>6. Zgłoszenia, dowody i zwroty przedmiotów</h2>
+          <ol class="rules">
+            <li data-number="6.1">Zgłoszenia należy przekazywać administracji przez przeznaczony do tego system ticketów. Zgłoszenie powinno zawierać możliwie dokładny opis, przybliżony czas zdarzenia oraz dane graczy, jeśli są znane.</li>
+            <li data-number="6.2"><strong>Zwrot przedmiotów jest możliwy wyłącznie na podstawie nagrania wideo</strong> jednoznacznie pokazującego przebieg zdarzenia oraz utracone przedmioty.</li>
+            <li data-number="6.3">Zrzuty ekranu, relacje świadków i logi mogą stanowić materiał pomocniczy, ale same nie zastępują nagrania wymaganego do zwrotu przedmiotów.</li>
+            <li data-number="6.4">Posiadanie nagrania nie gwarantuje automatycznego zwrotu. Administracja ocenia przyczynę straty, jakość dowodu oraz okoliczności każdego przypadku indywidualnie.</li>
+            <li data-number="6.5">W pozostałych zgłoszeniach nagranie nie zawsze jest bezwzględnie wymagane, jednak może mieć kluczowe znaczenie dla rzetelnego rozpatrzenia sprawy. Brak wystarczających dowodów może uniemożliwić nałożenie kary.</li>
+            <li data-number="6.6">Administracja może poprosić o pełny, nieedytowany materiał źródłowy. Fałszowanie, przycinanie wprowadzające w błąd lub ukrywanie istotnej części nagrania będzie traktowane jako poważne naruszenie regulaminu.</li>
+          </ol>
+        </section>
+
+        <section class="rules-section" id="kary">
+          <h2>7. Kary</h2>
+          <ol class="rules">
+            <li data-number="7.1"><strong>Za łamanie podstawowych zasad uczciwej rozgrywki przewidziane są surowe kary</strong>, włącznie z banem permanentnym.</li>
+            <li data-number="7.2">Każda sprawa jest rozpatrywana indywidualnie. Przy ustalaniu kary administracja może uwzględnić charakter naruszenia, jego skalę, zamiar, wcześniejsze przewinienia, współpracę gracza oraz zgromadzone dowody.</li>
+            <li data-number="7.3">W zależności od sytuacji administracja może zastosować ostrzeżenie, usunięcie nielegalnej konstrukcji lub przedmiotów, kick, czasowego bana, wyczyszczenie postaci albo bana permanentnego.</li>
+            <li data-number="7.4">Powtarzanie naruszeń, działanie w zorganizowanej grupie, ukrywanie dowodów, utrudnianie postępowania lub obchodzenie kary stanowią podstawę do jej zaostrzenia.</li>
+            <li data-number="7.5">Brak dosłownego opisania konkretnego sposobu nadużycia nie oznacza, że jest on dozwolony. Celowe wykorzystywanie luk w regulaminie przeciwko zasadom uczciwej gry może zostać ukarane.</li>
+          </ol>
+        </section>
+
+        <section class="rules-section" id="odwolania">
+          <h2>8. Odwołania od banów</h2>
+          <ol class="rules">
+            <li data-number="8.1"><strong>Od bana permanentnego można odwołać się najwcześniej po upływie 30 dni</strong> od dnia jego nałożenia.</li>
+            <li data-number="8.2">Od pozostałych banów trwających co najmniej 48 godzin można odwołać się po upływie 48 godzin od nałożenia kary.</li>
+            <li data-number="8.3">Bany krótsze niż 48 godzin nie podlegają standardowej procedurze odwoławczej.</li>
+            <li data-number="8.4">Odwołanie należy złożyć przez ticket. Powinno ono zawierać dane gracza, powód bana, rzeczowe wyjaśnienie sytuacji oraz ewentualne dowody.</li>
+            <li data-number="8.5">Złożenie odwołania nie oznacza automatycznego skrócenia ani anulowania kary. Administracja może karę utrzymać, skrócić albo uchylić po ponownym przeanalizowaniu sprawy.</li>
+            <li data-number="8.6">Omijanie bana przed rozpatrzeniem odwołania może skutkować odrzuceniem wniosku i zaostrzeniem kary.</li>
+          </ol>
+        </section>
+
+        <section class="rules-section" id="koncowe">
+          <h2>9. Postanowienia końcowe</h2>
+          <ol class="rules">
+            <li data-number="9.1">Administracja zastrzega sobie prawo do aktualizowania regulaminu w celu dostosowania go do zmian na serwerze i nowych form nadużyć.</li>
+            <li data-number="9.2">W sprawach nieopisanych wprost administracja podejmuje decyzję z uwzględnieniem zasad uczciwej gry, bezpieczeństwa serwera i zgromadzonych dowodów.</li>
+            <li data-number="9.3">Kontynuowanie gry po opublikowaniu zmian oznacza akceptację aktualnej wersji regulaminu.</li>
+          </ol>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <footer>MoonLight · Regulamin serwera DayZ · Wersja 1.0</footer>
+  <div class="toast" id="toast" role="status" aria-live="polite">Link został skopiowany</div>
+
+  <script>
+    const copyButton = document.querySelector('#copy-link');
+    const toast = document.querySelector('#toast');
+
+    copyButton.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        toast.classList.add('visible');
+        window.setTimeout(() => toast.classList.remove('visible'), 1800);
+      } catch {
+        window.prompt('Skopiuj link:', window.location.href);
+      }
+    });
+  </script>
+</body>
+</html>
